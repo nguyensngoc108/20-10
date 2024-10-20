@@ -1,0 +1,63 @@
+/* Background Image - Slightly blurred */
+body {
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('image.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    filter: blur(0px); /* Start with no blur */
+    z-index: -1; /* Behind everything */
+    animation: blurAnimation 5s forwards; /* Animation for blur effect */
+}   
+
+/* Text in the center */
+.text-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2; /* On top of everything */
+    text-align: center;
+    filter: blur(0px); /* Counteract the body blur */
+    font-family: 'Great Vibes', cursive; /* Romantic font */
+    opacity: 0; /* Start with hidden text */
+    animation: textFadeIn 5s forwards 5s; /* Fade in text after blur animation */
+}
+
+h1 {
+    font-size: 4em;
+    color: white;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+    font-weight: bold;
+}
+
+/* Keyframes for blur animation */
+@keyframes blurAnimation {
+    0% {
+        filter: blur(0px);
+        opacity: 0;
+    }
+    100% {
+        filter: blur(3px);
+        opacity: 1;
+    }
+}
+
+/* Keyframes for text fade-in animation */
+@keyframes textFadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
